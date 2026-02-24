@@ -1,0 +1,23 @@
+{
+  "name": "kudofatura-fiscal-bridge",
+  "version": "1.0.0",
+  "description": "Local bridge service for KudoFatura fiscal printer communication",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "install-service": "node install/windows-service.js --install",
+    "uninstall-service": "node install/windows-service.js --uninstall"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "serialport": "^12.0.0",
+    "iconv-lite": "^0.6.3",
+    "node-windows": "^1.0.0-beta.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
