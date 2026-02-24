@@ -1,0 +1,8 @@
+{
+  "brand": "datecs",
+  "port": "COM3",
+  "baudRate": 115200,
+  "middleware": "erpnet",
+  "erpnetUrl": "http://localhost:8001",
+  "printerId": "FP-700X"
+}
