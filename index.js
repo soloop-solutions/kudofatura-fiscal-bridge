@@ -35,6 +35,10 @@ function createPrinter(config) {
       const { TremolPrinter } = require("./lib/printers/tremol-zfplab");
       return new TremolPrinter(config);
     }
+    case "mock": {
+      const { MockPrinter } = require("./lib/printers/mock");
+      return new MockPrinter(config);
+    }
     default:
       throw new Error(`Unknown printer middleware/brand: ${middleware}`);
   }
