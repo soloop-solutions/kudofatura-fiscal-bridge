@@ -1,8 +1,9 @@
 {
   "brand": "datecs",
-  "port": "COM3",
+  "middleware": "datecs",
+  "port": "",
   "baudRate": 115200,
-  "middleware": "mock",
-  "erpnetUrl": "http://localhost:8001",
-  "printerId": "FP-700X"
+  "operatorId": "1",
+  "operatorPassword": "0000",
+  "configured": false
 }

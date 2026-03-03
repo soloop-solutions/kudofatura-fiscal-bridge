@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create zip (excluding node_modules, .git, dist)
+        run: |
+          zip -r KudoFatura-Bridge.zip . \
+            --exclude "node_modules/*" \
+            --exclude ".git/*" \
+            --exclude "dist/*" \
+            --exclude "*.log"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: KudoFatura-Bridge.zip
+          generate_release_notes: true
