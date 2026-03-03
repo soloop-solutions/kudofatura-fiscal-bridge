@@ -1,6 +1,6 @@
 {
   "name": "kudofatura-fiscal-bridge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Local bridge service for KudoFatura fiscal printer communication",
   "main": "index.js",
   "bin": "index.js",
