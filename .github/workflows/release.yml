@@ -7,20 +7,31 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create zip (excluding node_modules, .git, dist)
-        run: |
-          zip -r KudoFatura-Bridge.zip . \
-            --exclude "node_modules/*" \
-            --exclude ".git/*" \
-            --exclude "dist/*" \
-            --exclude "*.log"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install pkg
+        run: npm install -g @yao-pkg/pkg
+
+      - name: Build exe
+        run: pkg . --targets node18-win-x64 --output dist/KudoFatura-Bridge.exe
+
+      - name: Copy native bindings
+        run: node scripts/copy-natives.js
+
+      - name: Zip exe + bindings
+        run: Compress-Archive -Path dist/KudoFatura-Bridge.exe, dist/prebuilds -DestinationPath dist/KudoFatura-Bridge.zip
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: KudoFatura-Bridge.zip
+          files: dist/KudoFatura-Bridge.zip
           generate_release_notes: true
