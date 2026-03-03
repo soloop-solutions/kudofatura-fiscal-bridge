@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Local bridge service for KudoFatura fiscal printer communication",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
